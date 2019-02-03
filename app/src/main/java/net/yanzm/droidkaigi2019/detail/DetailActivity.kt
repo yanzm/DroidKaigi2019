@@ -14,6 +14,8 @@ import net.yanzm.droidkaigi2019.domain.SessionId
 import net.yanzm.droidkaigi2019.domain.Speaker
 import net.yanzm.droidkaigi2019.domain.TimeAndDate
 import net.yanzm.droidkaigi2019.text
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalTime
 
 class DetailActivity : AppCompatActivity() {
 
@@ -30,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
         simultaneousInterpretationTargetView.visibility =
             if (session.simultaneousInterpretationTarget) View.VISIBLE else View.GONE
         roomView.setText(session.room.text)
-        timeAndDateView.text = session.timeAndDate.toString()
+        timeAndDateView.text = session.timeAndDate.text
     }
 }
 
@@ -44,5 +46,9 @@ private val session = Session(
     Category.OTHER,
     false,
     Room.ROOM_1,
-    TimeAndDate()
+    TimeAndDate(
+        LocalDate.of(2019, 2, 7),
+        LocalTime.of(12, 50),
+        LocalTime.of(13, 40)
+    )
 )

@@ -5,6 +5,7 @@ import net.yanzm.droidkaigi2019.domain.Category
 import net.yanzm.droidkaigi2019.domain.Language
 import net.yanzm.droidkaigi2019.domain.Room
 import net.yanzm.droidkaigi2019.domain.SessionFormat
+import net.yanzm.droidkaigi2019.domain.TimeAndDate
 
 @get:StringRes
 val SessionFormat.text: Int
@@ -51,3 +52,6 @@ val Room.text: Int
         Room.ROOM_6 -> R.string.room_6
         Room.ROOM_7 -> R.string.room_7
     }
+
+val TimeAndDate.text: String
+    get() = "${date.monthValue}/${date.dayOfMonth} $startTime - $endTime"

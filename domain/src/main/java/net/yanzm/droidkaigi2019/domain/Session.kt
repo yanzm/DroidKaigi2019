@@ -1,5 +1,8 @@
 package net.yanzm.droidkaigi2019.domain
 
+import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalTime
+
 data class SessionId(val value: String)
 
 data class Session(
@@ -53,4 +56,8 @@ enum class Room {
     ROOM_7
 }
 
-class TimeAndDate
+data class TimeAndDate(
+    val date: LocalDate,
+    val startTime: LocalTime,
+    val endTime: LocalTime
+)
