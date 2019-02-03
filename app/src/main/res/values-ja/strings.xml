@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="simultaneousInterpretationTarget">同時通訳対象</string>
+
+    <string name="minutes_30">30分</string>
+    <string name="minutes_50">50分</string>
+
+    <string name="language_ja">日本語</string>
+    <string name="language_en">英語</string>
+    <string name="language_mix">日英混合</string>
+
+    <string name="category_xr">xR</string>
+    <string name="category_security">セキュリティ</string>
+    <string name="category_ui">UI・デザイン</string>
+    <string name="category_architecture">アプリアーキテクチャ</string>
+    <string name="category_hadrdware">ハードウェア</string>
+    <string name="category_platforms">Androidプラットフォーム</string>
+    <string name="category_maintenance">保守・運用・テスト</string>
+    <string name="category_development_processes">開発体制</string>
+    <string name="category_framework">Android FrameworkとJetpack(Support Library)</string>
+    <string name="category_productivity">開発ツール</string>
+    <string name="category_cross_platform">クロスプラットフォーム</string>
+    <string name="category_other">その他</string>
 </resources>

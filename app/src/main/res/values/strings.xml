@@ -2,4 +2,34 @@
 <resources>
     <string name="app_name" translatable="false">DroidKaigi2019</string>
     <string name="simultaneousInterpretationTarget">Simultaneous interpretation target</string>
+
+    <string name="minutes_30">30minutes</string>
+    <string name="minutes_50">50minutes</string>
+
+    <string name="language_ja">Japanese</string>
+    <string name="language_en">English</string>
+    <string name="language_mix">Japanese/English</string>
+
+    <string name="category_xr">xR</string>
+    <string name="category_security">Security</string>
+    <string name="category_ui">UI and Design</string>
+    <string name="category_architecture">Designing App Architecture</string>
+    <string name="category_hadrdware">Hardware</string>
+    <string name="category_platforms">Android Platforms</string>
+    <string name="category_maintenance">Maintenance Operations and Testing</string>
+    <string name="category_development_processes">Development processes</string>
+    <string name="category_framework">Android Framework and Jetpack (a.k.a. Support Library)</string>
+    <string name="category_productivity">Productivity and Tools</string>
+    <string name="category_cross_platform">Cross-platform Development</string>
+    <string name="category_other">Other</string>
+
+    <string name="room_hall_a" translatable="false">Hall A</string>
+    <string name="room_hall_b" translatable="false">Hall B</string>
+    <string name="room_1" translatable="false">Room 1</string>
+    <string name="room_2" translatable="false">Room 2</string>
+    <string name="room_3" translatable="false">Room 3</string>
+    <string name="room_4" translatable="false">Room 4</string>
+    <string name="room_5" translatable="false">Room 5</string>
+    <string name="room_6" translatable="false">Room 6</string>
+    <string name="room_7" translatable="false">Room 7</string>
 </resources>

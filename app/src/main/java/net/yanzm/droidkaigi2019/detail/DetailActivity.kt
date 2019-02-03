@@ -13,6 +13,7 @@ import net.yanzm.droidkaigi2019.domain.SessionFormat
 import net.yanzm.droidkaigi2019.domain.SessionId
 import net.yanzm.droidkaigi2019.domain.Speaker
 import net.yanzm.droidkaigi2019.domain.TimeAndDate
+import net.yanzm.droidkaigi2019.text
 
 class DetailActivity : AppCompatActivity() {
 
@@ -23,12 +24,12 @@ class DetailActivity : AppCompatActivity() {
         titleView.text = session.title
         abstractView.text = session.abstract
         speakerView.text = session.speaker.toString()
-        sessionFormatView.text = session.sessionFormat.toString()
-        languageView.text = session.language.toString()
-        categoryView.text = session.category.toString()
+        sessionFormatView.setText(session.sessionFormat.text)
+        languageView.setText(session.language.text)
+        categoryView.setText(session.category.text)
         simultaneousInterpretationTargetView.visibility =
             if (session.simultaneousInterpretationTarget) View.VISIBLE else View.GONE
-        roomView.text = session.room.toString()
+        roomView.setText(session.room.text)
         timeAndDateView.text = session.timeAndDate.toString()
     }
 }
