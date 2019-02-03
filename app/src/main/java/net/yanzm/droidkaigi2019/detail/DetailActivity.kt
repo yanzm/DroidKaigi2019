@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_detail.*
 import net.yanzm.droidkaigi2019.R
@@ -13,8 +14,6 @@ import net.yanzm.droidkaigi2019.sessionRepository
 import net.yanzm.droidkaigi2019.text
 
 class DetailActivity : AppCompatActivity() {
-
-    private lateinit var viewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +26,11 @@ class DetailActivity : AppCompatActivity() {
                 return
             }
 
-        viewModel = ViewModelProviders
+        val viewModel = ViewModelProviders
             .of(this, DetailViewModel.Factory(sessionId, sessionRepository))
             .get(DetailViewModel::class.java)
 
-        viewModel.listener = { session ->
+        viewModel.session.observe(this, Observer { session ->
             titleView.text = session.title
             abstractView.text = session.abstract
             speakerView.text = session.speaker.joinToString { it.name }
@@ -42,12 +41,7 @@ class DetailActivity : AppCompatActivity() {
                 if (session.simultaneousInterpretationTarget) View.VISIBLE else View.GONE
             roomView.setText(session.room.text)
             timeAndDateView.text = session.timeAndDate.text
-        }
-    }
-
-    override fun onDestroy() {
-        viewModel.listener = null
-        super.onDestroy()
+        })
     }
 
     companion object {

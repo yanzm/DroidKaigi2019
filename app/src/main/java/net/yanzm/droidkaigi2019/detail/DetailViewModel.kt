@@ -1,5 +1,7 @@
 package net.yanzm.droidkaigi2019.detail
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.CoroutineScope
@@ -22,20 +24,17 @@ class DetailViewModel(
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
-    private var session: Session? = null
-    var listener: ((Session) -> Unit)? = null
-        set(value) {
-            field = value
-            session?.let { value?.invoke(it) }
-        }
+    private val _session = MutableLiveData<Session>()
+    val session: LiveData<Session>
+        get() = _session
 
     init {
         launch {
             val result = withContext(Dispatchers.Default) {
                 repository.sessionId(id)
             }
-            session = result
-            listener?.invoke(result)
+            _session.value = result
+
         }
     }
 
