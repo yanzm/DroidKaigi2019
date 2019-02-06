@@ -53,9 +53,9 @@ class DetailActivityTest {
     }
 
     class DummySessionRepository : SessionRepository {
-        override fun day(day: ConferenceDay): List<Session> = emptyList()
+        override suspend fun day(day: ConferenceDay): List<Session> = emptyList()
 
-        override fun sessionId(id: SessionId): Session {
+        override suspend fun sessionId(id: SessionId): Session {
             return Session(
                 id,
                 "LiveData と Coroutines で実装する DDD の戦術的設計",

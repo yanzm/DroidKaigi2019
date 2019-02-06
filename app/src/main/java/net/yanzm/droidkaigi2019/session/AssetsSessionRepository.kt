@@ -3,6 +3,7 @@ package net.yanzm.droidkaigi2019.session
 import android.app.Application
 import androidx.annotation.WorkerThread
 import com.squareup.moshi.Moshi
+import kotlinx.coroutines.yield
 import net.yanzm.droidkaigi2019.domain.Category
 import net.yanzm.droidkaigi2019.domain.ConferenceDay
 import net.yanzm.droidkaigi2019.domain.Language
@@ -110,16 +111,20 @@ class AssetsSessionRepository(private val application: Application) : SessionRep
     }
 
     @WorkerThread
-    override fun day(day: ConferenceDay): List<Session> {
+    override suspend fun day(day: ConferenceDay): List<Session> {
         val date = when (day) {
             ConferenceDay.DAY1 -> LocalDate.of(2019, 2, 7)
             ConferenceDay.DAY2 -> LocalDate.of(2019, 2, 8)
         }
+        val sessions = sessions
+        yield()
         return sessions.filter { it.timeAndDate.date == date }
     }
 
     @WorkerThread
-    override fun sessionId(id: SessionId): Session {
+    override suspend fun sessionId(id: SessionId): Session {
+        val sessions = sessions
+        yield()
         return sessions.first { it.id == id }
     }
 }
