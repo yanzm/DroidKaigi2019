@@ -1,5 +1,6 @@
 package net.yanzm.droidkaigi2019.domain
 
+import org.threeten.bp.Duration
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
 
@@ -60,4 +61,6 @@ data class TimeAndDate(
     val date: LocalDate,
     val startTime: LocalTime,
     val endTime: LocalTime
-)
+) {
+    val durationMinutes: Long = Duration.between(startTime, endTime).toMinutes()
+}
