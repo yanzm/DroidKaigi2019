@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_detail.*
 import net.yanzm.droidkaigi2019.R
+import net.yanzm.droidkaigi2019.domain.PublicSession
 import net.yanzm.droidkaigi2019.domain.SessionId
 import net.yanzm.droidkaigi2019.sessionRepository
 import net.yanzm.droidkaigi2019.text
@@ -33,12 +34,23 @@ class DetailActivity : AppCompatActivity() {
         viewModel.session.observe(this, Observer { session ->
             titleView.text = session.title
             abstractView.text = session.abstract
-            speakerView.text = session.speaker.joinToString { it.name }
-            sessionFormatView.setText(session.sessionFormat.text)
-            languageView.setText(session.language.text)
-            categoryView.setText(session.category.text)
-            simultaneousInterpretationTargetView.visibility =
-                if (session.simultaneousInterpretationTarget) View.VISIBLE else View.GONE
+            when (session) {
+                is PublicSession -> {
+                    speakerView.text = session.speaker.joinToString { it.name }
+                    sessionFormatView.setText(session.sessionFormat.text)
+                    languageView.setText(session.language.text)
+                    categoryView.setText(session.category.text)
+                    simultaneousInterpretationTargetView.visibility =
+                        if (session.simultaneousInterpretationTarget) View.VISIBLE else View.GONE
+                }
+                else -> {
+                    speakerView.visibility = View.GONE
+                    sessionFormatView.visibility = View.GONE
+                    languageView.visibility = View.GONE
+                    categoryView.visibility = View.GONE
+                    simultaneousInterpretationTargetView.visibility = View.GONE
+                }
+            }
             roomView.setText(session.room.text)
             timeAndDateView.text = session.timeAndDate.text
         })

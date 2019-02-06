@@ -32,4 +32,7 @@
     <string name="room_5" translatable="false">Room 5</string>
     <string name="room_6" translatable="false">Room 6</string>
     <string name="room_7" translatable="false">Room 7</string>
+
+    <string name="party">Party</string>
+    <string name="lunch">Lunch</string>
 </resources>

@@ -21,4 +21,7 @@
     <string name="category_productivity">開発ツール</string>
     <string name="category_cross_platform">クロスプラットフォーム</string>
     <string name="category_other">その他</string>
+
+    <string name="party">パーティー</string>
+    <string name="lunch">ランチ</string>
 </resources>

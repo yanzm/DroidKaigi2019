@@ -4,20 +4,64 @@ import org.threeten.bp.Duration
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalTime
 
+sealed class TimetableItem {
+    abstract val timeAndDate: TimeAndDate
+}
+
+data class Party(
+    val room: Room,
+    override val timeAndDate: TimeAndDate
+) : TimetableItem()
+
+data class Lunch(
+    override val timeAndDate: TimeAndDate
+) : TimetableItem()
+
 data class SessionId(val value: String)
 
-data class Session(
-    val id: SessionId,
-    val title: String,
-    val abstract: String,
+sealed class Session : TimetableItem() {
+    abstract val id: SessionId
+    abstract val title: String
+    abstract val abstract: String
+    abstract val room: Room
+}
+
+data class WelcomeTalk(
+    override val id: SessionId,
+    override val title: String,
+    override val abstract: String,
+    override val room: Room,
+    override val timeAndDate: TimeAndDate
+) : Session()
+
+data class Codelabs(
+    override val id: SessionId,
+    override val title: String,
+    override val abstract: String,
+    override val room: Room,
+    override val timeAndDate: TimeAndDate
+) : Session()
+
+data class FiresideChat(
+    override val id: SessionId,
+    override val title: String,
+    override val abstract: String,
+    override val room: Room,
+    override val timeAndDate: TimeAndDate
+) : Session()
+
+data class PublicSession(
+    override val id: SessionId,
+    override val title: String,
+    override val abstract: String,
     val speaker: List<Speaker>,
     val sessionFormat: SessionFormat,
     val language: Language,
     val category: Category,
     val simultaneousInterpretationTarget: Boolean,
-    val room: Room,
-    val timeAndDate: TimeAndDate
-)
+    override val room: Room,
+    override val timeAndDate: TimeAndDate
+) : Session()
 
 enum class SessionFormat {
     MIN_30,

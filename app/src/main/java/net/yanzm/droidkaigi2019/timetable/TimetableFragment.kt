@@ -8,11 +8,12 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.fragment_time_table.*
+import kotlinx.android.synthetic.main.fragment_timetable.*
 import net.yanzm.droidkaigi2019.R
 import net.yanzm.droidkaigi2019.detail.DetailActivity
 import net.yanzm.droidkaigi2019.domain.ConferenceDay
 import net.yanzm.droidkaigi2019.domain.Session
+import net.yanzm.droidkaigi2019.domain.TimetableItem
 import net.yanzm.droidkaigi2019.sessionRepository
 
 class TimetableFragment : Fragment() {
@@ -22,7 +23,7 @@ class TimetableFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_time_table, container, false)
+        return inflater.inflate(R.layout.fragment_timetable, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -34,17 +35,19 @@ class TimetableFragment : Fragment() {
             .of(this, TimetableViewModel.Factory(day, requireContext().sessionRepository))
             .get(TimetableViewModel::class.java)
 
-        fun createTimetableItemView(session: Session): TimetableItemView {
-            val view = TimetableItemView(requireContext(), session)
-            view.setOnClickListener {
-                startActivity(DetailActivity.createIntent(requireContext(), session.id))
+        fun createTimetableItemView(item: TimetableItem): TimetableItemView {
+            return TimetableItemView(requireContext(), item).apply {
+                if (item is Session) {
+                    setOnClickListener {
+                        startActivity(DetailActivity.createIntent(requireContext(), item.id))
+                    }
+                }
             }
-            return view
         }
 
         viewModel.list.observe(this, Observer {
-            it.forEach { session ->
-                timetableView.addView(createTimetableItemView(session))
+            it.forEach { item ->
+                timetableView.addView(createTimetableItemView(item))
             }
         })
     }

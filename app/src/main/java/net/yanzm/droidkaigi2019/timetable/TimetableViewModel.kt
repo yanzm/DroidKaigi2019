@@ -10,8 +10,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import net.yanzm.droidkaigi2019.domain.ConferenceDay
-import net.yanzm.droidkaigi2019.domain.Session
 import net.yanzm.droidkaigi2019.domain.SessionRepository
+import net.yanzm.droidkaigi2019.domain.TimetableItem
 import kotlin.coroutines.CoroutineContext
 
 class TimetableViewModel(
@@ -24,8 +24,8 @@ class TimetableViewModel(
 
     private val job = Job()
 
-    private val _list = MutableLiveData<List<Session>>()
-    val list: LiveData<List<Session>>
+    private val _list = MutableLiveData<List<TimetableItem>>()
+    val list: LiveData<List<TimetableItem>>
         get() = _list
 
     init {
