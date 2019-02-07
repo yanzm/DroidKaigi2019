@@ -1,6 +1,6 @@
 DroidKaigi 2019 での講演「LiveData と Coroutines で実装する DDD の戦術的設計」の中で出てくるサンプルコードです。
 
-* step1 [diff](https://github.com/yanzm/DroidKaigi2019/compare/master...step1)
+* step1 [diff](https://github.com/yanzm/DroidKaigi2019/compare/step0...step1)
 * step2 [diff](https://github.com/yanzm/DroidKaigi2019/compare/step1...step2)
 * step3 [diff](https://github.com/yanzm/DroidKaigi2019/compare/step2...step3)
 * step4 [diff](https://github.com/yanzm/DroidKaigi2019/compare/step3...step4)
